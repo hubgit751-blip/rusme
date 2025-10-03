@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>escoffier's Extravagant resturaunt- Navea</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+
+    header {
+        background-color: #2c3e50;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 2rem;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #e74c3c;
+    }
+
+
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-top: 70px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #e74c3c;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background: #c0392b;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .cards-section {
+        padding: 80px 0;
+        background-color: #fff;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        color: #2c3e50;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: #e74c3c;
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    .card-img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+
+    .card-text {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+    }
+
+    .card-price {
+        font-weight: bold;
+        color: #e74c3c;
+        font-size: 1.2rem;
+    }
+
+
+    footer {
+        background-color: #2c3e50;
+        color: white;
+        padding: 60px 0 30px;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background: #e74c3c;
+    }
+
+    .footer-section p {
+        margin-bottom: 10px;
+        color: #bdc3c7;
+    }
+
+    .footer-section ul {
+        list-style: none;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+        color: #e74c3c;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .social-links a {
+        color: #bdc3c7;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+        color: #e74c3c;
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #bdc3c7;
+        font-size: 0.9rem;
+    }
+
+
+    @media (max-width: 768px) {
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .nav-container {
+            flex-direction: column;
+        }
+
+        .nav-links {
+            margin-top: 1rem;
+        }
+
+        .nav-links li {
+            margin: 0 0.5rem;
+        }
+    }
+    iframe{
+        max-width: 100%;
+    }
+</style>
+</header>
+
+
+<header>
+    <div class="container nav-container">
+        <div class="logo">Navea</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Reservations</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Navea Restaurant</h1>
+        <p>Experience the finest culinary delights in a cozy and elegant atmosphere. Our chefs create masterpieces that
+            will delight your senses.</p>
+        <a href="#" class="btn">Order Now</a>
+    </div>
+</section>
+
+
+<section class="cards-section">
+    <div class="container">
+        <h2 class="section-title">Our Specialties</h2>
+        <div class="cards-container">
+
+            <div class="card">
+                <img src="https://pizzaware.com/wp-content/uploads/2023/05/Truffle-Pizza-2.jpg"
+                    alt="Truffle Pizza with mushrooms and cheese" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Truffle Pizza</h3>
+                    <p class="card-text">Our signature pizza with black truffle, wild mushrooms, and three types of
+                        cheese.</p>
+                    <p class="card-price">$24.99</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://somuchfoodblog.com/wp-content/uploads/2021/02/lobster-risotto13-scaled.jpg"
+                    alt="Lobster Pasta in creamy tomato sauce" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Lobster Rissoto</h3>
+                    <p class="card-text">Fresh butter poached lobster served with Rissoto in a creamy rich sauce.</p>
+                    <p class="card-price">$34.49</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://cdn.shopify.com/s/files/1/0748/1684/8190/files/20250408175456-mediterranean-20ribeye-20steak-20salad-20-20with-20hummus-20and-20spring-20vegetables-20.png?v=1744134898&width=1600&height=900"
+                    alt="Ribeye Steak with roasted vegetables" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Mediterranean Ribeye Steak Salad with Hummus and Spring Vegetables</h3>
+                    <p class="card-text">Premium ribeye steak grilled to perfection, served with roasted vegetables.</p>
+                    <p class="card-price">$69.99</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <img src="https://neighborfoodblog.com/wp-content/uploads/2017/11/cheesecake-with-sour-cream-topping-5.jpg"
+                    alt="Chocolate Lava Cake with vanilla ice cream" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Cheese Cake</h3>
+                    <p class="card-text"> cheese cake slice with a mixed berry jam, served with vanilla ice cream.</p>
+                    <p class="card-price">$16.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h3>About Navea</h3>
+                <p>Navea Restaurant has been serving exceptional cuisine since 2005. Our commitment to quality
+                    ingredients and innovative recipes has made us a favorite dining destination.
+<div class="social-links">
+    <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Twitter (X)">
+        <i class="fa-brands fa-x-twitter"></i>
+    </a>
+</div>
+</p>
+
+            </div>
+
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>231 Gourmet Avenue</p>
+                <p>France,Paris, FC 12345</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: info@navearestaurant.com</p>
+            </div>
+
+
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <p>Monday - Thursday: 11am - 10pm</p>
+                <p>Friday - Saturday: 11am - 11pm</p>
+                <p>Sunday: 10am - 9pm</p>
+            </div>
+
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Reservations</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40972.00385783136!2d67.04684506871988!3d24.81435803372076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d43b18485d7%3A0x7d9536de885db845!2sClifton%20Sea-View%20Karachi%20Sindh!5e0!3m2!1sen!2s!4v1759305911221!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Navea Restaurant. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
