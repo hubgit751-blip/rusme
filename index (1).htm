@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        :root {
+            --primary: #007bff;
+            --secondary: #6610f2;
+            --accent: #00cfff;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+        }
+
+
+        .navbar {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            padding: 12px 20px;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        :root {
+            --primary: #007bff;
+            --secondary: #6610f2;
+            --accent: #00cfff;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+        }
+
+
+        .navbar {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            padding: 12px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-cards {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.4s;
+            box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            display: flex;
+        }
+
+        .navbar-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+
+        #globalSearchInput {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            width: 200px;
+            transition: all 0.3s;
+        }
+
+        #globalSearchInput:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(0, 201, 255, 0.2);
+        }
+
+
+        #globalSearchForm button[type="submit"] {
+            padding: 10px 14px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h4 {
+            margin: 10px 0;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .card button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .card button:hover {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.3s, opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer Styling */
+        .site-footer {
+            background: linear-gradient(to right, var(--dark), #212529);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: #009b66;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.htm">Home</a></li>
+                <li><a href="about.htm">About</a></li>
+                <li><a href="product.htm">Product</a></li>
+                <li><a href="gallery.htm">Gallery</a></li>
+                <li><a href="contact.htm">Contact</a></li>
+
+                <div class="navar-right">
+                    <li class="cart-icon"></li>
+                    <a href="cart.html">Cart
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    </li>
+                    <li>
+                        <form style="display: flex;" id="globalSearchForm">
+                            <input type="text" id="globalSearchInput" placeholder="Search Products..." />
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="button" class="clear-btn">Clear</button>
+                        </form>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <body>
+            <section class="hero">
+                <h1>Welcome to Our China.ltd Store</h1>
+                <p>Discover the best Skins at reasonable cheap prices.</p>
+                <p>Skins and Cases/ 2% Tax</p>
+            </section>
+            <section class="product-cards">
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Green</h3>
+                    <p>¥100</p>
+                    <button class="add-to-cart" product-id="1">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Purple</h3>
+                    <p>¥169</p>
+                    <button class="add-to-cart" product-id="2">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>White</h3>
+                    <p>¥199</p>
+                    <button class="add-to-cart" product-id="3">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Black</h3>
+                    <p>¥249</p>
+                    <button class="add-to-cart" product-id="4">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Blue</h3>
+                    <p>¥298</p>
+                    <button class="add-to-cart" product-id="5">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Agent Orange</h3>
+                    <p>¥369</p>
+                    <button class="add-to-cart" product-id="6">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Red</h3>
+                    <p>¥399</p>
+                    <button class="add-to-cart" product-id="7">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Yellow</h3>
+                    <p>¥429</p>
+                    <button class="add-to-cart" product-id="8">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Pink</h3>
+                    <p>¥459</p>
+                    <button class="add-to-cart" product-id="9">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Cyan</h3>
+                    <p>¥489</p>
+                    <button class="add-to-cart" product-id="10">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Magenta</h3>
+                    <p>¥519</p>
+                    <button class="add-to-cart" product-id="11">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Teal</h3>
+                    <p>¥549</p>
+                    <button class="add-to-cart" product-id="12">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Gold</h3>
+                    <p>¥579</p>
+                    <button class="add-to-cart" product-id="13">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Silver</h3>
+                    <p>¥609</p>
+                    <button class="add-to-cart" product-id="14">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Neon Green</h3>
+                    <p>¥639</p>
+                    <button class="add-to-cart" product-id="15">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Neon Blue</h3>
+                    <p>¥669</p>
+                    <button class="add-to-cart" product-id="16">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Neon Pink</h3>
+                    <p>¥699</p>
+                    <button class="add-to-cart" product-id="17">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Rainbow</h3>
+                    <p>¥729</p>
+                    <button class="add-to-cart" product-id="18">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Matte Black</h3>
+                    <p>¥759</p>
+                    <button class="add-to-cart" product-id="19">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="" alt="Not Available">
+                    <h3>Camouflage</h3>
+                    <p>¥789</p>
+                    <button class="add-to-cart" product-id="20">Add to Cart</button>
+                </div>
+            </section>
+    </main>
+</body>
+
+</html>
